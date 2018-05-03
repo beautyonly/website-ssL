@@ -189,7 +189,7 @@ function install_crontab(){
 
 # 工具升级
 function tool_upgrade(){
-    curl -so website-ssl.new.sh https://github.com/beautyonly/website-ssL/website-ssl.sh
+    curl -so website-ssl.new.sh https://github.com/beautyonly/website-ssL/blob/master/website-ssl.sh 
     test_valid=$(grep -i -n "<!DOCTYPE html" website-ssl.new.sh | cut -d":" -f 1)
     if [[ -z $test_valid || $test_valid -gt 10 ]];then
         echo "工具已升级到最新版！"
@@ -198,7 +198,7 @@ function tool_upgrade(){
     else
         rm -rf website-ssl.new.sh
         echo "工具升级失败，请稍后再试，或者到「Github」进行源码更新："
-        echo "  https://github.com/beautyonly/website-ssL/website-ssl.sh "
+        echo "  https://github.com/beautyonly/website-ssL/blob/master/website-ssl.sh"
     fi
 }
 
