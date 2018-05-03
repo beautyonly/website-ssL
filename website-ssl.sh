@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # ******************************************
-# author: Alien(https://www.baidu.com)
-# github: https://github.com/beautyonly/website-ssL
+# mail: Alien(beautytao@protonmail.com)
+# github: https://github.com/beautyonly/website-ssL/
 # ******************************************
 
 printf "\n\n`date`> 升级Https证书\n"
@@ -143,7 +143,8 @@ function nginx_tpl(){
     # 这只是一个Demo，请根据自己的实际需求调整nginx-conf
     server {
         listen       80;
-        server_name  your-website.com;
+        #server_name  域名;
+        server_name  your-baidu.com;
 
         # CA认证
         location ^~ /.well-known/acme-challenge/ {
@@ -159,7 +160,7 @@ function nginx_tpl(){
 
     server {
         listen 443 ssl;
-        server_name  your-website.com;
+        server_name  your-baidu.com;
 
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2 SSLv2;
         ssl_ciphers EECDH+CHACHA20:EECDH+CHACHA20-draft:EECDH+ECDSA+AES128:EECDH+aRSA+AES128:RSA+AES128:EECDH+ECDSA+AES256:EECDH+aRSA+AES256:RSA+AES256:EECDH+ECDSA+3DES:EECDH+aRSA+3DES:RSA+3DES:!MD5;
@@ -189,7 +190,7 @@ function install_crontab(){
 
 # 工具升级
 function tool_upgrade(){
-    curl -so website-ssl.new.sh https://github.com/beautyonly/website-ssL/blob/master/website-ssl.sh 
+    curl -so website-ssl.new.sh https://github.com/beautyonly/website-ssL/blame/master/website-ssl.sh 
     test_valid=$(grep -i -n "<!DOCTYPE html" website-ssl.new.sh | cut -d":" -f 1)
     if [[ -z $test_valid || $test_valid -gt 10 ]];then
         echo "工具已升级到最新版！"
@@ -198,7 +199,7 @@ function tool_upgrade(){
     else
         rm -rf website-ssl.new.sh
         echo "工具升级失败，请稍后再试，或者到「Github」进行源码更新："
-        echo "  https://github.com/beautyonly/website-ssL/blob/master/website-ssl.sh"
+        echo "  https://github.com/beautyonly/website-ssL/blame/master/website-ssl.sh"
     fi
 }
 
